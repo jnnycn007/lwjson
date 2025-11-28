@@ -1,6 +1,6 @@
-.. _api_lwjson:
+.. _api_lwjson_serializer:
 
-LwJSON
-======
+JSON Serializer
+===============
 
 .. doxygengroup:: LWJSON_SERIALIZER
