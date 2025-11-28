@@ -2,6 +2,8 @@
 
 ## Develop
 
+- Added the JSON serialized new feature
+
 ## 1.8.1
 
 - Fix the platformio library package description

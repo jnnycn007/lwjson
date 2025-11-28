@@ -3,7 +3,7 @@
  * \brief           JSON serializer for building JSON strings incrementally
  */
 
- /*
+/*
  * Copyright (c) 2025 Tilen MAJERLE
  *
  * Permission is hereby granted, free of charge, to any person
@@ -35,8 +35,8 @@
 #define LWJSON_SERIALIZER_HDR_H
 
 /* Include system headers */
-#include <stdint.h>
 #include <stddef.h>
+#include <stdint.h>
 
 /* Include lwjson library */
 #include "lwjson.h"
@@ -46,11 +46,17 @@ extern "C" {
 #endif
 
 /**
+ * \defgroup        LWJSON_SERIALIZER JSON serializer
+ * \brief           JSON serializer
+ * \{
+ */
+
+/**
  * \brief           Stack element types for tracking nesting
  */
 typedef enum {
-    LWJSON_SERIALIZER_TYPE_OBJECT = 0,     /*!< Object type on stack */
-    LWJSON_SERIALIZER_TYPE_ARRAY,          /*!< Array type on stack */
+    LWJSON_SERIALIZER_TYPE_OBJECT = 0, /*!< Object type on stack */
+    LWJSON_SERIALIZER_TYPE_ARRAY,      /*!< Array type on stack */
 } lwjson_serializer_stack_type_t;
 
 /**
@@ -65,11 +71,10 @@ typedef lwjsonr_t (*lwjson_serializer_callback_fn)(void* ctx, const char* str, s
 /**
  * \brief           Context structure for default buffered output
  */
-typedef struct
-{
-    char *buffer;     /*!< Pointer to the buffer for serialized output */
-    size_t capacity;  /*!< Maximum capacity of the buffer */
-    size_t length;    /*!< Current length of the serialized output */
+typedef struct {
+    char* buffer;    /*!< Pointer to the buffer for serialized output */
+    size_t capacity; /*!< Maximum capacity of the buffer */
+    size_t length;   /*!< Current length of the serialized output */
 } lwjson_serializer_default_ctx_t;
 
 /**
@@ -77,27 +82,32 @@ typedef struct
  */
 typedef struct {
     lwjson_serializer_stack_type_t stack[LWJSON_CFG_SERIALIZER_MAX_STACK_DEPTH]; /*!< Stack for tracking nesting */
-    int32_t top;                                                    /*!< Current top of stack */
-    uint8_t need_comma;                                             /*!< Flag indicating if comma is needed before next element */
-    lwjson_serializer_callback_fn callback;                              /*!< Callback function for serialization */
-    void* ctx;                                                      /*!< User context passed to callback */
-    lwjson_serializer_default_ctx_t default_ctx;                    /*!< Default context for buffered output */
+    int32_t top;                                                                 /*!< Current top of stack */
+    uint8_t need_comma;                          /*!< Flag indicating if comma is needed before next element */
+    lwjson_serializer_callback_fn callback;      /*!< Callback function for serialization */
+    void* ctx;                                   /*!< User context passed to callback */
+    lwjson_serializer_default_ctx_t default_ctx; /*!< Default context for buffered output */
 } lwjson_serializer_t;
 
 lwjsonr_t lwjson_serializer_init(lwjson_serializer_t* serializer, char* user_buffer, size_t buffer_size);
 lwjsonr_t lwjson_serializer_finalize(lwjson_serializer_t* serializer, size_t* total_length);
-lwjsonr_t lwjson_serializer_init_callback(lwjson_serializer_t* serializer, lwjson_serializer_callback_fn callback, void* ctx);
+lwjsonr_t lwjson_serializer_init_callback(lwjson_serializer_t* serializer, lwjson_serializer_callback_fn callback,
+                                          void* ctx);
 lwjsonr_t lwjson_serializer_start_object(lwjson_serializer_t* serializer, const char* key, size_t key_len);
 lwjsonr_t lwjson_serializer_start_array(lwjson_serializer_t* serializer, const char* key, size_t key_len);
 lwjsonr_t lwjson_serializer_end_object(lwjson_serializer_t* serializer);
 lwjsonr_t lwjson_serializer_end_array(lwjson_serializer_t* serializer);
-lwjsonr_t lwjson_serializer_add_string(lwjson_serializer_t* serializer, const char* key, size_t key_len, const char* value, size_t value_len);
+lwjsonr_t lwjson_serializer_add_string(lwjson_serializer_t* serializer, const char* key, size_t key_len,
+                                       const char* value, size_t value_len);
 lwjsonr_t lwjson_serializer_add_uint(lwjson_serializer_t* serializer, const char* key, size_t key_len, uint64_t value);
 lwjsonr_t lwjson_serializer_add_int(lwjson_serializer_t* serializer, const char* key, size_t key_len, int64_t value);
 lwjsonr_t lwjson_serializer_add_float(lwjson_serializer_t* serializer, const char* key, size_t key_len, double value);
 lwjsonr_t lwjson_serializer_add_bool(lwjson_serializer_t* serializer, const char* key, size_t key_len, uint8_t value);
 lwjsonr_t lwjson_serializer_add_null(lwjson_serializer_t* serializer, const char* key, size_t key_len);
 
+/**
+ * \}
+ */
 
 #ifdef __cplusplus
 }

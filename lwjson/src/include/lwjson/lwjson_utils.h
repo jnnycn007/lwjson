@@ -3,7 +3,7 @@
  * \brief           JSON string utility functions for character escaping and unescaping
  */
 
- /*
+/*
  * Copyright (c) 2025 Tilen MAJERLE
  *
  * Permission is hereby granted, free of charge, to any person
@@ -35,8 +35,8 @@
 #define LWJSON_UTILS_HDR_H
 
 /* Include system headers */
-#include <stdint.h>
 #include <stddef.h>
+#include <stdint.h>
 
 /* Include lwjson library */
 #include "lwjson.h"
@@ -46,9 +46,21 @@
 extern "C" {
 #endif
 
-lwjsonr_t lwjson_utils_escape_string(const char* input, size_t input_len, char* output, size_t output_capacity, size_t* bytes_written);
-lwjsonr_t lwjson_utils_escape_string_cb(const char* input, size_t input_len, lwjson_serializer_callback_fn callback, void* ctx);
-lwjsonr_t lwjson_utils_unescape_string(const char* input, size_t input_len, char* output, size_t output_capacity, size_t* bytes_written);
+/**
+ * \ingroup         LWJSON
+ * \{
+ */
+
+lwjsonr_t lwjson_utils_escape_string(const char* input, size_t input_len, char* output, size_t output_capacity,
+                                     size_t* bytes_written);
+lwjsonr_t lwjson_utils_escape_string_cb(const char* input, size_t input_len, lwjson_serializer_callback_fn callback,
+                                        void* ctx);
+lwjsonr_t lwjson_utils_unescape_string(const char* input, size_t input_len, char* output, size_t output_capacity,
+                                       size_t* bytes_written);
+
+/**
+ * \}
+ */
 
 #ifdef __cplusplus
 }
