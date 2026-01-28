@@ -92,8 +92,7 @@ static const event_data_t expected_events[] = {
         {LWJSON_STREAM_TYPE_KEY, 1},
             {LWJSON_STREAM_TYPE_NUMBER, 2},
         {LWJSON_STREAM_TYPE_KEY, 1},
-            // 8 calls to transfer 107 characters in chunks of 15
-            {LWJSON_STREAM_TYPE_STRING, 2},
+            // 7 calls to transfer 107 characters in chunks of 16
             {LWJSON_STREAM_TYPE_STRING, 2},
             {LWJSON_STREAM_TYPE_STRING, 2},
             {LWJSON_STREAM_TYPE_STRING, 2},

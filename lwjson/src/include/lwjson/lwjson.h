@@ -121,10 +121,10 @@ typedef enum {
                                     closing character matched the stream opening one */
     lwjsonSTREAMINPROG,        /*!< Stream parsing is still in progress */
 
-    lwjsonERRNULL,   /*!< NULL pointer provided as parameter */
-    lwjsonERRINVAL,  /*!< Invalid input parameter, other than NULL */
-    lwjsonERRBUF,    /*!< Output buffer is too small */
-    lwjsonERRESC,    /*!< Invalid escape sequence in string */
+    lwjsonERRNULL,  /*!< NULL pointer provided as parameter */
+    lwjsonERRINVAL, /*!< Invalid input parameter, other than NULL */
+    lwjsonERRBUF,   /*!< Output buffer is too small */
+    lwjsonERRESC,   /*!< Invalid escape sequence in string */
 } lwjsonr_t;
 
 /**
