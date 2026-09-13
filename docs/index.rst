@@ -23,10 +23,14 @@ Features
 * Re-entrant functions
 * Zero-copy, no ``malloc`` or ``free`` functions used
 * Supports streaming parsing as secondary option
-* Optional support for inline comments with `/* comment... */` syntax between any *blank* region of input string
-* JSON serializer separate module
+* Optional support for inline comments with ``/* comment... */`` syntax between any *blank* region of input string
+* JSON serializer separate module, with fixed-buffer or callback-driven chunked output
+* Optional 64-bit integer serialization
+* Stream parser stack-sequence helper macros for matching nested structures
+* Distinct integer and real number token types
+* Dedicated string escape/unescape utility API
 * Advanced find algorithm for tokens
-* Tests coverage is available
+* Test coverage is available
 * User friendly MIT license
 
 Requirements

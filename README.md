@@ -2,7 +2,7 @@
 
 Library provides generic JSON text parser, that is optimized for embedded systems.
 Supports `streaming` parsing or classic parsing with full JSON data available in one big linear memory.
-First one being optimized for ultra small microcontrollers, second one being ready for PC applications - or simply when several kB of RAM memory is available at any given point of time
+The first is optimized for ultra-small microcontrollers, while the second is better suited for PC applications, or simply when several kB of RAM are available.
 
 [Open documentation](https://docs.majerle.eu/projects/lwjson/)
 
@@ -13,10 +13,14 @@ First one being optimized for ultra small microcontrollers, second one being rea
 * Based on static token allocation with optional application dynamic pre-allocation
 * No recursion during parse operation
 * Re-entrant functions
-* Zero-copy, no ``malloc`` or ``free`` functions used
+* Zero-copy, no `malloc` or `free` functions used
 * Supports streaming parsing as secondary option
 * Optional support for inline comments with `/* comment... */` syntax between any *blank* region of input string
-* JSON serializer separate module
+* JSON serializer separate module, with fixed-buffer or callback-driven chunked output
+* Optional 64-bit integer serialization
+* Stream parser stack-sequence helper macros for matching nested structures
+* Distinct integer and real number token types
+* Dedicated string escape/unescape utility API
 * Advanced find algorithm for tokens
 * Test coverage is available
 * User friendly MIT license
