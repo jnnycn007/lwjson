@@ -1,6 +1,6 @@
 # Lightweight JSON text parser
 
-Library provides generic JSON text parser, that is optimized for embedded systems.
+LwJSON is a generic JSON parser library optimized for embedded systems.
 Supports `streaming` parsing or classic parsing with full JSON data available in one big linear memory.
 The first is optimized for ultra-small microcontrollers, while the second is better suited for PC applications, or simply when several kB of RAM are available.
 
